@@ -1,0 +1,7 @@
+# Скопируйте этот файл в .dev.vars только для локального запуска.
+# Никогда не публикуйте настоящий токен.
+BOT_TOKEN=replace_with_bot_token
+WEBHOOK_SECRET=replace_with_a_long_random_value
+INTERNAL_SECRET=replace_with_another_long_random_value
+# Оставьте пустым, чтобы разрешить регистрацию всем, кто открыл бота.
+STAFF_CODE=

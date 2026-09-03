@@ -1,0 +1,23 @@
+{
+  "name": "restaurant-stoplist-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Serverless Telegram bot for restaurant menu availability and staff workflows",
+  "scripts": {
+    "check": "node --check src/index.js && node --check src/bot.js && node --check src/broadcast.js && node --check src/availability.js && node --check src/owner.js && node --check src/telegram.js && node --check src/ui.js && node --check src/schedule.js && node --check src/orderParser.js && node --check src/publicAnnouncement.js && node --check src/settings.js",
+    "test": "node --test",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:local": "wrangler d1 migrations apply restaurant-stoplist-bot-db --local",
+    "db:remote": "wrangler d1 migrations apply restaurant-stoplist-bot-db --remote",
+    "telegram:setup": "node scripts/configure-telegram.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1",
+    "wrangler": "^4.30.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
