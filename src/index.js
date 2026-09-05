@@ -40,7 +40,7 @@ export default {
     const url = new URL(request.url);
 
     if (request.method === "GET" && url.pathname === "/") {
-      return json({ ok: true, service: "tugan-menu-bot" });
+      return json({ ok: true, service: "restaurant-stoplist-bot" });
     }
 
     const broadcastMatch = /^\/internal\/broadcast\/(\d+)$/.exec(url.pathname);
@@ -76,6 +76,11 @@ export default {
       update = await request.json();
     } catch {
       return json({ ok: false, error: "invalid_json" }, 400);
+    }
+
+    if (!update || typeof update !== "object" || Array.isArray(update)
+      || !Number.isSafeInteger(update.update_id) || update.update_id < 0) {
+      return json({ ok: false, error: "invalid_update" }, 400);
     }
 
     if (!(await claimUpdate(env, update.update_id))) return json({ ok: true, duplicate: true });

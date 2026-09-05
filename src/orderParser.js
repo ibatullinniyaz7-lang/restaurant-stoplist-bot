@@ -146,7 +146,7 @@ export function parseOrder(text, dishes) {
   const items = String(text ?? "")
     .replace(/\r/g, "")
     .split(/\n|\\/u)
-    .map((line) => line.replace(/^\s*\[[^\]]+\]\s*[^:]+:\s*/u, "").replace(/^\s*niyaz:\s*/iu, "").trim())
+    .map((line) => line.replace(/^\s*\[[^\]]+\]\s*[^:]+:\s*/u, "").trim())
     .filter(Boolean)
     .flatMap((line) => lineItems(line, dishes));
 
